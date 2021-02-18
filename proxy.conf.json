@@ -1,0 +1,8 @@
+{
+  "/v1/*": {
+    "target": "https://api.clashofclans.com",
+    "secure": true,
+    "logLevel": "debug",
+    "changeOrigin": true
+  }
+}
