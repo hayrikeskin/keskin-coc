@@ -1,0 +1,58 @@
+<div *ngIf="clan">
+    <div *ngIf="clan" class="clr-row">
+        <div class="clr-col-xl">
+            <span>
+                <h1>{{clan.name}}</h1>
+            </span>
+            <img *ngIf="clan.badgeUrls" src="{{clan.badgeUrls.small}}" />
+        </div>
+    </div>
+    <div class="clr-row">
+        <div class="clr-col-xl">
+            <span>{{clan.description}}</span>
+        </div>
+    </div>
+    <table class="table table-vertical">
+        <tbody>
+            <tr>
+                <th>Location</th>
+                <td>The location of members</td>
+                <td *ngIf="clan.location">{{clan.location.name}}</td>
+            </tr>
+            <tr>
+                <th>Level</th>
+                <td>The average level of members</td>
+                <td>{{clan.clanLevel}}</td>
+            </tr>
+            <tr>
+                <th>Points</th>
+                <td>Sum of points of all members</td>
+                <td>{{clan.clanPoints}}
+                </td>
+            </tr>
+            <tr>
+                <th>Versus Points</th>
+                <td>Sum of points in all versus battles</td>
+                <td>{{clan.clanVersusPoints}}
+                </td>
+            </tr>
+            <tr>
+                <th>War Win Streak</th>
+                <td>War win in a row</td>
+                <td>{{clan.warWinStreak}}</td>
+            </tr>
+            <tr>
+                <th>War Wins</th>
+                <td>Sum of all war won</td>
+                <td>{{clan.warWins}}</td>
+            </tr>
+            <tr>
+                <th>War League</th>
+                <td>League levels are : bronze, silver, gold, crystal, master, champion, titan and legend. Legend has
+                    one
+                    division. Other levels have three divisions.</td>
+                <td *ngIf="clan.warLeague">{{clan.warLeague.name}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

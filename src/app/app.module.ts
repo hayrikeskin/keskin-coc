@@ -7,18 +7,23 @@ import { ClarityModule } from '@clr/angular';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ClanDetailComponent } from './clan-detail/clan-detail.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ClanPropertiesComponent } from './clan-properties/clan-properties.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ClanDetailComponent
+    ClanDetailComponent,
+    ClanPropertiesComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
     ClarityModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    FormsModule,
+    ReactiveFormsModule  
   ],
   bootstrap: [AppComponent]
 })

@@ -7,14 +7,13 @@ import { IClan } from '../clan-detail/clan';
     providedIn: 'root'
 })
 export class CoCApiService {
-    private apiUrl = 'assets/api-clan.php';
-
+    private apiUrl = 'assets/api-clan.php?clan=#';
     //Uncomment to use data from .Net C# API
-    //apiUrl = 'https://localhost:5001/api/values/%238L000CQ8';       
+    //private apiUrl = 'https://localhost:5001/api/values/%23';       
 
     constructor(private http: HttpClient) { }
 
-    public getClan(): Observable<IClan> {
-        return this.http.get<IClan>(this.apiUrl);
+    public getClan(tag: string): Observable<IClan> {
+        return this.http.get<IClan>(this.apiUrl + tag);
     }
 }

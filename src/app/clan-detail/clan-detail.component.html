@@ -1,146 +1,116 @@
 <clr-alert [clrAlertAppLevel]="true">
-    <clr-alert-item>
-        <span class="alert-text">
-            This is a test page with info about my Clash of Clans
-        </span>
-    </clr-alert-item>
+  <clr-alert-item>
+    <span class="alert-text">
+      This is a test page with info about my Clash of Clans
+    </span>
+  </clr-alert-item>
 </clr-alert>
-<div *ngIf="clan">
-    <clr-tabs>
-        <clr-tab>
-          <button clrTabLink>Clan info</button>
-          <clr-tab-content *clrIfActive>              
-            <div class="clr-row">
-                <div class="clr-col-xl">                    
-                    <span><h1>{{clan.name}}</h1></span>
-                    <img src="{{clan.badgeUrls.small}}" />
-                </div>
-            </div>
-            <div class="clr-row">
-                <div class="clr-col-xl">
-                    <span>{{clan.description}}</span>
-                </div>
-            </div>
-            <table class="table table-vertical">
-                <tbody>
-                   <tr>
-                    <th>Location</th>
-                    <td>The location of members</td>
-                    <td>{{clan.location.name}}</td>
-                    </tr>
-                  <tr>
-                    <th>Level</th>
-                    <td>The average level of members</td>
-                    <td>{{clan.clanLevel}}</td>
-                  </tr>
-                  <tr>
-                    <th>Points</th>
-                    <td>Sum of points of all members</td>
-                    <td>{{clan.clanPoints}}
-                    </td>
-                  </tr>
-                  <tr>
-                    <th>Versus Points</th>
-                    <td>Sum of points in all versus battles</td>
-                    <td>{{clan.clanVersusPoints}}
-                    </td>
-                  </tr>
-                  <tr>
-                    <th>War Win Streak</th>
-                    <td>War win in a row</td>
-                    <td>{{clan.warWinStreak}}</td>
-                  </tr>
-                  <tr>
-                    <th>War Wins</th>
-                    <td>Sum of all war won</td>
-                    <td>{{clan.warWins}}</td>
-                  </tr>
-                  <tr>
-                    <th>War League</th>
-                    <td>League levels are : bronze, silver, gold, crystal, master, champion, titan and legend. Legend has one division. Other levels have three divisions.</td>
-                    <td>{{clan.warLeague.name}}</td>
-                  </tr>
-                </tbody>
-              </table>
-          </clr-tab-content>
-        </clr-tab>
-        <clr-tab>
-          <button clrTabLink>Members ({{clan.members}})</button>
-          <clr-tab-content *clrIfActive>            
-                <table class="table">                        
-                    <thead>
-                        <tr>
-                          <th>Name</th>
-                          <th>Role</th>
-                          <th>Level</th>
-                          <th>Trophies</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr *ngFor="let member of clan.memberList">                    
-                            <td>{{member.name}}</td>
-                            <td>{{member.role}}</td>
-                            <td>{{member.expLevel}}</td>
-                            <td>{{member.trophies}}</td>
-                        </tr>
-                    </tbody>
-                </table>
-          </clr-tab-content>
-        </clr-tab>
-        <clr-tab>
-            <button clrTabLink>Me</button>
-            <clr-tab-content *clrIfActive> 
-                <div *ngIf="clanMember">
-                    <table class="table table-vertical">
-                        <caption>
-                          My personal statistics
-                        </caption>
-                        <tbody>
-                          <tr>
-                            <th>Name</th>
-                            <td>{{clanMember.name}}</td>
-                          </tr>
-                          <tr>
-                            <th>Role</th>
-                            <td>{{clanMember.role}}
-                            </td>
-                          </tr>
-                          <tr>
-                            <th>Level</th>
-                            <td>{{clanMember.expLevel}}
-                            </td>
-                          </tr>
-                          <tr>
-                            <th>Trophies</th>
-                            <td>{{clanMember.trophies}}</td>
-                          </tr>
-                          <tr>
-                            <th>Versus Trophies</th>
-                            <td>{{clanMember.versusTrophies}}</td>
-                          </tr>
-                          <tr>
-                            <th>Clan rank</th>
-                            <td>{{clanMember.clanRank}} of {{clan.members}}</td>
-                          </tr>
-                          <tr>
-                            <th>Donations</th>
-                            <td>{{clanMember.donations}}</td>
-                          </tr>
-                          <tr>
-                            <th>Donations received</th>
-                            <td>{{clanMember.donationsReceived}}</td>
-                          </tr>
-                          <tr>
-                            <th>League</th>
-                            <td>
-                                <img src="{{clanMember.league.iconUrls.small}}" />
-                                {{clanMember.league.name}}
-                            </td>
-                          </tr>
-                        </tbody>
-                      </table>
-                </div>
-            </clr-tab-content>
-        </clr-tab>
-      </clr-tabs>
-</div> 
+<clr-tabs>
+  <clr-tab>
+    <button clrTabLink>Clan info</button>
+    <clr-tab-content *clrIfActive>
+      <app-clan-properties [clan]="clan"></app-clan-properties>
+    </clr-tab-content>
+  </clr-tab>
+  <clr-tab>
+    <button clrTabLink>Members</button>
+    <clr-tab-content *clrIfActive>
+      <form clrForm>
+        <clr-datalist-container>
+          <input clrDatalistInput placeholder="Enter name" (change)="onChangeName($event)" />
+          <datalist>
+            <option *ngFor="let member of clan.memberList" [value]="member.name"></option>
+          </datalist>
+        </clr-datalist-container>
+      </form>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Role</th>
+            <th>Level</th>
+            <th>Trophies</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let member of memberList">
+            <td>{{member.name}}</td>
+            <td>{{member.role}}</td>
+            <td>{{member.expLevel}}</td>
+            <td>{{member.trophies}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </clr-tab-content>
+  </clr-tab>
+  <clr-tab>
+    <button clrTabLink>Me</button>
+    <clr-tab-content *clrIfActive>
+      <div *ngIf="clanMember">
+        <table class="table table-vertical">
+          <caption>
+            My personal statistics
+          </caption>
+          <tbody>
+            <tr>
+              <th>Name</th>
+              <td>{{clanMember.name}}</td>
+            </tr>
+            <tr>
+              <th>Role</th>
+              <td>{{clanMember.role}}
+              </td>
+            </tr>
+            <tr>
+              <th>Level</th>
+              <td>{{clanMember.expLevel}}
+              </td>
+            </tr>
+            <tr>
+              <th>Trophies</th>
+              <td>{{clanMember.trophies}}</td>
+            </tr>
+            <tr>
+              <th>Versus Trophies</th>
+              <td>{{clanMember.versusTrophies}}</td>
+            </tr>
+            <tr>
+              <th>Clan rank</th>
+              <td>{{clanMember.clanRank}} of {{clan.members}}</td>
+            </tr>
+            <tr>
+              <th>Donations</th>
+              <td>{{clanMember.donations}}</td>
+            </tr>
+            <tr>
+              <th>Donations received</th>
+              <td>{{clanMember.donationsReceived}}</td>
+            </tr>
+            <tr>
+              <th>League</th>
+              <td>
+                <img src="{{clanMember.league.iconUrls.small}}" />
+                {{clanMember.league.name}}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </clr-tab-content>
+  </clr-tab>
+  <clr-tab>
+    <button clrTabLink>Other clans</button>
+    <clr-tab-content *clrIfActive>
+      <div class="clr-row">
+        <div class="clr-col-xl">
+          <clr-input-container>
+            <label>Clan tag #</label>
+            <input clrInput placeholder="Fill clan tag" name="tag" [(ngModel)]="tag" />
+          </clr-input-container>
+          <button class="btn btn-primary" (click)="onChangeClan()">Get clan</button>
+        </div>
+      </div>
+      <app-clan-properties [clan]="otherClan"></app-clan-properties>
+    </clr-tab-content>
+  </clr-tab>
+</clr-tabs>

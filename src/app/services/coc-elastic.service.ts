@@ -11,7 +11,7 @@ export class CoCElasticService {
 
   constructor(private http: HttpClient) { }
   
-  getClan(): Observable<IElasticClan> {
+  public getClan(): Observable<IElasticClan> {
     return this.http.get<IElasticClan>(this.requestUrl);
   }
 }
