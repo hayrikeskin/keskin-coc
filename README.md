@@ -1,6 +1,7 @@
 # Keskin CoC
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.1.4.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.1.4. 
+The design makes use of Clarity’s designs system. Clarity is an open-source, enterprise-focused design system (https://clarity.design/).
 
 ## Install modules
 Run `npm install` to include all modules.
@@ -12,11 +13,11 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 ## Build
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-Run `ng build --prod --base-href /coc/` to build in subfolder `/coc/` in production.
+Run `ng build --prod --base-href /coc/` to make build ready for subfolder `/coc/` in production.
 
 ## Run in Docker
 
-Change `keskin-coc` in the file `Dockerfile` in root of this project to own repository-name. Run `docker build --rm -t keskin-coc:latest .` (change `keskin-coc` in command to won repository name). The app will be copied to Docker.
+Change `keskin-coc` in the file `Dockerfile` in root of this project to own repository-name. Run `docker build --rm -t keskin-coc:latest .` (change `keskin-coc` in command to own repository name). The app will be copied to Docker.
 Run `docker run --rm -d -p 90:80/tcp keskin-coc:latest` to launch the app. Navigate to `http://localhost:90/` to see the app.
 
 ## Retrieve data from .Net C# API
