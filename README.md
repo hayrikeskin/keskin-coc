@@ -25,6 +25,12 @@ Download .Net C# API from https://github.com/hayrikeskin/CocAPI and run project.
 Uncomment line to use data from .Net C# API.
 Uncomment lines to retrieve data from Backend API in `/src/app/clan-detail/clan-detail-component.ts` and restart the app.
 
+
+## Retrieve data from Java API
+Download Java API from https://github.com/hayrikeskin/CocJavaAPI and run project.
+Uncomment line to use data from .Net C# API.
+Uncomment lines to retrieve data from Backend API in `/src/app/clan-detail/clan-detail-component.ts` and restart the app.
+
 ## Run Elastic in Docker
 
 Run `docker pull docker.elastic.co/elasticsearch/elasticsearch:7.11.1` to install Elastic in Docker.
