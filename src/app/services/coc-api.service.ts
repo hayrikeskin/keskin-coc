@@ -13,7 +13,7 @@ export class CoCApiService {
     //private apiUrl = 'https://localhost:5001/api/values/%23';
 
     //Uncomment to use data from Java API
-    //http://localhost:8080/CocJavaAPI/clans/%23
+    //private apiUrl = 'http://localhost:8080/CocJavaAPI/clans/%23';
 
     constructor(private http: HttpClient) { }
 
