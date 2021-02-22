@@ -25,12 +25,12 @@ export class ClanDetailComponent implements OnInit {
   
   setClan(id: number, clanTag : string) {
     this.fs.getClan().subscribe(c => {
-      id == 1 ? this.otherClan = c : this.clan = c; this.memberList = c.memberList; c.memberList.forEach(m => { m.name === 'Hayri' ? this.clanMember = m : false; });
+     id == 1 ? this.otherClan = c : this.clan = c; this.memberList = c.memberList; c.memberList.forEach(m => { m.name === 'Hayri' ? this.clanMember = m : false; });
     });
-    
+   
     //Uncomment lines to retrieve data from Backend API
     //this.as.getClan(clanTag).subscribe(c => {
-    // id == 1 ? this.otherClan = c : this.clan = c; this.memberList = c.memberList; c.memberList.forEach(m => { m.name === 'Hayri' ? this.clanMember = m : false; });
+    // //id == 1 ? this.otherClan = c : this.clan = c; this.memberList = c.memberList; c.memberList.forEach(m => { m.name === 'Hayri' ? this.clanMember = m : false; });
     //});
 
     //Uncomment lines to retrieve data from Elastic
